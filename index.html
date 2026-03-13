@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/Logo.png">
-
     <title>Generador de Cotizaciones</title>
     <style>
         * {
@@ -13,7 +11,6 @@
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -22,7 +19,6 @@
             padding: 20px;
             min-height: 100vh;
         }
-
         h1 {
             font-size: 2.2rem;
             color: #ffffff;
@@ -32,13 +28,11 @@
             letter-spacing: 3px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
-
         /* Form Styles */
         form {
             background: #fff;
@@ -47,7 +41,6 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
             margin-bottom: 30px;
         }
-
         form h2 {
             color: #333;
             margin: 20px 0 15px 0;
@@ -55,7 +48,6 @@
             border-bottom: 2px solid #667eea;
             padding-bottom: 8px;
         }
-
         label {
             display: block;
             margin-bottom: 15px;
@@ -63,8 +55,7 @@
             color: #444;
             font-size: 0.95rem;
         }
-
-        input {
+        input[type="text"], input[type="number"], input[type="date"] {
             width: 100%;
             padding: 12px 15px;
             margin-top: 5px;
@@ -74,13 +65,19 @@
             transition: all 0.3s ease;
             font-family: inherit;
         }
-
         input:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            font-weight: 600;
+            color: #444;
+        }
         button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #fff;
@@ -93,25 +90,20 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
-
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
         }
-
         button:active {
             transform: translateY(0);
         }
-
         #addRow {
             margin-top: 15px;
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
         }
-
         #addRow:hover {
             box-shadow: 0 6px 16px rgba(17, 153, 142, 0.4);
         }
-
         table#itemsTable {
             width: 100%;
             border-collapse: collapse;
@@ -121,7 +113,6 @@
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
-
         table#itemsTable th {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #fff;
@@ -130,40 +121,33 @@
             font-weight: 600;
             font-size: 0.9rem;
         }
-
         table#itemsTable td {
             padding: 8px;
             border: 1px solid #f0f0f0;
         }
-
         table#itemsTable input {
             margin: 0;
             padding: 8px;
             border: 1px solid #e0e0e0;
         }
-
         table#itemsTable .remove {
             background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
             padding: 6px 12px;
             font-size: 12px;
         }
-
         table#itemsTable .importe {
             font-weight: 600;
             color: #667eea;
         }
-
         /* Preview Styles */
         #preview {
             width: 100%;
             margin: 0 auto;
             padding: 0;
             background: #fff;
-
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
             overflow: hidden;
         }
-
         .header {
             background: #000000;
             color: #fff;
@@ -173,76 +157,63 @@
             gap: 20px;
             margin: 0;
         }
-
         .logo img {
             height: 100px;
             width: 100px;
             object-fit: contain;
             border-radius: 50%;
         }
-
         .company {
             flex: 1;
             text-align: left;
         }
-
         .company h2 {
             margin: 0 0 8px 0;
             font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 1px;
         }
-
         .company p {
             margin: 3px 0;
             font-size: 0.9rem;
             color: #e0e0e0;
         }
-
         .title {
             font-size: 2.5em;
             font-weight: 700;
             text-align: right;
             letter-spacing: 2px;
         }
-
         .info {
             padding: 25px 30px;
             background: #fafafa;
         }
-
         .info-row {
             display: flex;
             justify-content: space-between;
             margin-bottom: 12px;
             font-size: 0.95rem;
         }
-
         .info-row strong {
             font-weight: 700;
             color: #000;
             margin-right: 8px;
         }
-
         .info-row span {
             color: #333;
         }
-
         .info-row-right {
             text-align: left;
             font-weight: 600;
         }
-
         .table-container {
             padding: 0 30px 30px 30px;
         }
-
         .invoice-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.95rem;
         }
-
         .invoice-table th {
             background: #000000;
             color: #fff;
@@ -253,82 +224,67 @@
             font-size: 0.85rem;
             letter-spacing: 0.5px;
         }
-
         .invoice-table td {
             padding: 14px 15px;
             border-bottom: 1px solid #e0e0e0;
         }
-
         .invoice-table tbody tr:hover {
             background-color: #f8f9fa;
         }
-
         .invoice-table tbody td:first-child {
             font-weight: 500;
             width: 50%;
         }
-
         .invoice-table tbody td:nth-child(2) {
-            text-align: left;
+            text-align: center;
             font-weight: 600;
             width: 15%;
         }
-
         .invoice-table tbody td:nth-child(3),
         .invoice-table tbody td:nth-child(4) {
-            text-align: left;
+            text-align: right;
             font-weight: 600;
             width: 17.5%;
         }
-
         .invoice-table .description-multi {
             line-height: 1.4;
         }
-
         .invoice-table .description-main {
             font-weight: 600;
             color: #000;
         }
-
         .invoice-table .description-sub {
             font-size: 0.85rem;
             color: #666;
         }
-
         .invoice-table tfoot td {
             font-weight: 600;
             text-align: right;
             padding: 12px 15px;
             border: none;
         }
-
         .invoice-table tfoot tr {
             border-top: 2px solid #e0e0e0;
         }
-
         .invoice-table tfoot tr:last-child td:nth-child(2),
         .invoice-table tfoot tr:last-child td:nth-child(1) {
             background: #000000;
             color: #ffffff;
         }
-
         .invoice-table tfoot tr:last-child td:nth-child(3),
         .invoice-table tfoot tr:last-child td:nth-child(4) {
             background: #000000;
             color: #fff;
         }
-
         .invoice-table tfoot tr:last-child td {
             padding: 16px 15px;
             font-size: 1.1rem;
             font-weight: 700;
         }
-
         #previewTotal,
         #previewTotal2 {
             color: #fff;
         }
-
         #generatePDF {
             display: block;
             margin: 30px auto;
@@ -337,7 +293,6 @@
             font-size: 16px;
             box-shadow: 0 4px 12px rgba(235, 51, 73, 0.3);
         }
-
         #sharePDF {
             display: block;
             margin: 10px auto 30px auto;
@@ -346,41 +301,34 @@
             font-size: 16px;
             box-shadow: 0 4px 12px rgba(17, 153, 142, 0.3);
         }
-
         #generatePDF:hover,
         #sharePDF:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(235, 51, 73, 0.4);
         }
-
         #generatePDF:active,
         #sharePDF:active {
             transform: translateY(0);
         }
-
         @media print {
             body {
                 background: #fff;
             }
-
             form,
             h1:first-of-type,
             #generatePDF,
             #sharePDF {
                 display: none;
             }
-
             #preview {
                 box-shadow: none;
                 border: 1px solid #000;
             }
         }
     </style>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
-
 <body>
     <div class="container">
         <h1>Editor de Cotización</h1>
@@ -389,7 +337,6 @@
                 <input type="text" id="logoUrl" placeholder="https://ejemplo.com/logo.png"
                     value="https://i.ibb.co/1JnMz9VS/Logo.png">
             </label>
-
             <label>Nombre de la Compañía: <input type="text" id="companyName" value="PAYASOS CHISPA ALEGRE"></label>
             <label>Teléfono: <input type="text" id="phone" value="84007951-84007952"></label>
             <label>Email: <input type="text" id="email" value="payasoschispalegre@gmail.com"></label>
@@ -398,6 +345,11 @@
             <label>N° de Factura (opcional): <input type="text" id="invoiceNum" value=""></label>
             <label>Fecha: <input type="date" id="date"></label>
             <label>N° de Pedido: <input type="text" id="orderNum" value="01"></label>
+
+            <div class="checkbox-label">
+                <input type="checkbox" id="includeIVA" checked>
+                <label for="includeIVA" style="margin:0; font-weight:600;">Incluir IVA (13%) en la cotización</label>
+            </div>
 
             <h2>Items (agrega o elimina filas)</h2>
             <table id="itemsTable">
@@ -436,7 +388,6 @@
                 </div>
                 <div class="title">Cotización</div>
             </div>
-
             <div class="info">
                 <div class="info-row">
                     <div><strong><span id="previewClient"></span></strong></div>
@@ -450,7 +401,6 @@
                     <div><strong>FECHA:</strong> <span id="previewDate"></span></div>
                 </div>
             </div>
-
             <div class="table-container">
                 <table class="invoice-table">
                     <thead>
@@ -467,7 +417,7 @@
                             <td colspan="3">Subtotal</td>
                             <td id="previewSubtotal"></td>
                         </tr>
-                        <tr>
+                        <tr id="ivaRow">
                             <td colspan="3">IVA (13%)</td>
                             <td id="previewIVA"></td>
                         </tr>
@@ -479,6 +429,7 @@
                 </table>
             </div>
         </div>
+
         <button id="generatePDF">Generar y Descargar PDF</button>
         <button id="sharePDF">Compartir</button>
     </div>
@@ -487,8 +438,8 @@
         const form = document.getElementById('invoiceForm');
         const itemsTable = document.getElementById('itemsTable');
         const addRowBtn = document.getElementById('addRow');
-        const generatePDFBtn = document.getElementById('generatePDF');
-        const sharePDFBtn = document.getElementById('sharePDF');
+        const includeIVACheck = document.getElementById('includeIVA');
+        const ivaRow = document.getElementById('ivaRow');
 
         addRowBtn.addEventListener('click', () => {
             const tr = document.createElement('tr');
@@ -511,7 +462,9 @@
             }
         });
 
-        itemsTable.addEventListener('input', () => updatePreview());
+        // Actualizar cada vez que cambie cualquier input o el checkbox
+        form.addEventListener('input', updatePreview);
+        includeIVACheck.addEventListener('change', updatePreview);
 
         function updatePreview() {
             document.getElementById('previewLogo').src = document.getElementById('logoUrl').value || '';
@@ -522,6 +475,7 @@
             document.getElementById('previewInvoiceNum').textContent = document.getElementById('invoiceNum').value;
             document.getElementById('previewQuoteNum').textContent = document.getElementById('quoteNum').value;
             document.getElementById('previewOrderNum').textContent = document.getElementById('orderNum').value;
+
             const dateValue = document.getElementById('date').value;
             if (dateValue) {
                 const [year, month, day] = dateValue.split('-').map(Number);
@@ -530,6 +484,10 @@
             } else {
                 document.getElementById('previewDate').textContent = '';
             }
+
+            // Mostrar / ocultar fila de IVA
+            const includeIVA = includeIVACheck.checked;
+            ivaRow.style.display = includeIVA ? '' : 'none';
 
             const tbody = document.getElementById('previewTbody');
             tbody.innerHTML = '';
@@ -556,25 +514,32 @@
                 tbody.appendChild(tr);
             });
 
-            const iva = subtotal * 0.13;
-            const total = subtotal + iva;
+            let iva = 0;
+            let total = subtotal;
+
+            if (includeIVA) {
+                iva = subtotal * 0.13;
+                total = subtotal + iva;
+            }
 
             document.getElementById('previewSubtotal').textContent = '₡' + subtotal.toLocaleString('es-ES', { minimumFractionDigits: 2 });
             document.getElementById('previewIVA').textContent = '₡' + iva.toLocaleString('es-ES', { minimumFractionDigits: 2 });
             document.getElementById('previewTotal').textContent = '₡' + total.toLocaleString('es-ES', { minimumFractionDigits: 2 });
         }
 
-        form.addEventListener('input', updatePreview);
+        // Inicializar vista previa
         updatePreview();
 
-        generatePDFBtn.addEventListener('click', async () => {
+        // ────────────────────────────────────────────────
+        // Generar PDF (sin cambios)
+        // ────────────────────────────────────────────────
+        document.getElementById('generatePDF').addEventListener('click', async () => {
             const { jsPDF } = window.jspdf;
             const preview = document.getElementById('preview');
-
             await new Promise(r => setTimeout(r, 100));
-
             const canvas = await html2canvas(preview, { scale: 2, useCORS: true });
             const imgData = canvas.toDataURL('image/png');
+
             const pdf = new jsPDF({
                 orientation: 'p',
                 unit: 'in',
@@ -588,17 +553,19 @@
             const imgY = 0;
 
             pdf.addImage(imgData, 'PNG', imgX, imgY, canvas.width * ratio, canvas.height * ratio, '', 'FAST');
-            pdf.save('PAYASOS CHISPA ALEGRE.pdf');
+            pdf.save('cotizacion-payasos-chispa-alegre.pdf');
         });
 
-        sharePDFBtn.addEventListener('click', async () => {
+        // ────────────────────────────────────────────────
+        // Compartir PDF (sin cambios)
+        // ────────────────────────────────────────────────
+        document.getElementById('sharePDF').addEventListener('click', async () => {
             const { jsPDF } = window.jspdf;
             const preview = document.getElementById('preview');
-
             await new Promise(r => setTimeout(r, 100));
-
             const canvas = await html2canvas(preview, { scale: 2, useCORS: true });
             const imgData = canvas.toDataURL('image/png');
+
             const pdf = new jsPDF({
                 orientation: 'p',
                 unit: 'in',
@@ -615,24 +582,26 @@
             const pdfDataUri = pdf.output('datauristring');
 
             if (navigator.share) {
-                // Use Web Share API if supported
-                const blob = await (await fetch(pdfDataUri)).blob();
-                const files = [new File([blob], 'PAYASOS CHISPA ALEGRE.pdf', { type: 'application/pdf' })];
-                await navigator.share({
-                    files: files,
-                    title: 'Cotización - PAYASOS CHISPA ALEGRE',
-                    text: 'Aquí tienes la cotización generada.'
-                });
+                try {
+                    const blob = await (await fetch(pdfDataUri)).blob();
+                    const files = [new File([blob], 'cotizacion-payasos-chispa-alegre.pdf', { type: 'application/pdf' })];
+                    await navigator.share({
+                        files,
+                        title: 'Cotización - PAYASOS CHISPA ALEGRE',
+                        text: 'Aquí tienes la cotización generada.'
+                    });
+                } catch (err) {
+                    console.error(err);
+                    alert('No se pudo compartir. Intenta descargar el PDF.');
+                }
             } else {
-                // Fallback: Create a temporary link for download or copy
                 const link = document.createElement('a');
                 link.href = pdfDataUri;
-                link.download = 'PAYASOS CHISPA ALEGRE.pdf';
+                link.download = 'cotizacion-payasos-chispa-alegre.pdf';
                 link.click();
-                alert('Tu navegador no soporta compartir directamente. El archivo se ha descargado. Puedes compartirlo manualmente.');
+                alert('Tu navegador no soporta compartir directamente. Se descargó el archivo.');
             }
         });
     </script>
 </body>
-
 </html>
